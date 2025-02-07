@@ -16,8 +16,7 @@ weapons = ["Fist", "Knife", "Club", "Gun", "Bomb", "Nuclear Bomb"]
 
 # Define the Loot
 loot_options = ["Health Potion", "Poison Potion", "Secret Note", "Leather Boots", "Flimsy Gloves"]
-good_loot_options = ["Health Potion", "Leather Boots"]
-bad_loot_options = ["Poison Potion"]
+
 belt = []
 
 # Define the Monster's Powers
@@ -136,16 +135,17 @@ if not input_invalid:
     print("Your belt: ", belt)
 
     # Use Loot
-    print("!!You see a monster in the distance! So you quickly use your first item:")
-    first_item = belt.pop(0)
-    if first_item in good_loot_options:
-        health_points = min(6, (health_points + 2))
-        print("You used " + first_item + " to up your health to " + str(health_points))
-    elif first_item in bad_loot_options:
-        health_points = max(0, (health_points - 2))
-        print("You used " + first_item + " to hurt your health to " + str(health_points))
-    else:
-        print("You used " + first_item + " but it's not helpful")                   
+    # print("!!You see a monster in the distance! So you quickly use your first item:")
+    # first_item = belt.pop(0)
+    # if first_item in good_loot_options:
+        # health_points = min(6, (health_points + 2))
+        # print("You used " + first_item + " to up your health to " + str(health_points))
+    # elif first_item in bad_loot_options:
+        # health_points = max(0, (health_points - 2))
+        # print("You used " + first_item + " to hurt your health to " + str(health_points))
+    # else:
+        # print("You used " + first_item + " but it's not helpful")
+    belt, health_points = functions_lab05.use_loot(belt, health_points)
     
     print("    ------------------------------------------------------------------")
     print("    |", end="    ")
@@ -181,6 +181,15 @@ if not input_invalid:
     m_combat_strength += min(6, m_combat_strength + monster_powers[power_roll])
     print("    |    The monster's combat strength is now " + str(
         m_combat_strength) + " using the " + power_roll + " magic power")
+
+
+    # Q6: Inception Dream
+    crazy_level = functions_lab05.inception_dream(5)
+    health_points -= 1
+    combat_strength += crazy_level
+    print(f"Your health points are now {health_points}")
+    print(f"Your combat strength is now {combat_strength}")
+
 
     # Fight Sequence
     # Loop while the monster and the player are alive. Call fight sequence functions
