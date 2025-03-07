@@ -1,18 +1,18 @@
 # Reading
-f = open("dontwant.txt")
+f = open("../../dontwant.txt")
 # f = open("dontwant.txt", "r") # Identical
 s = f.readlines()
 print(s)
 f.close()
 
 # Writing
-f = open("dontwant.txt", "w")
+f = open("../../dontwant.txt", "w")
 f.write("Some line\n")
 f.write("More lines\n")
 f.close()
 
 # Appending
-with open("dontwant.txt", "a") as f:
+with open("../../dontwant.txt", "a") as f:
     # s = f.realines()
     # print(s)
     f.write("Extra line\n")
@@ -22,7 +22,7 @@ with open("dontwant.txt", "a") as f:
 import random
 
 # Put all the functions into another file and import them
-import functions_lab06
+from old_labs.lab6 import functions_lab06
 
 # Game Flow
 # Define two Dice
@@ -47,7 +47,7 @@ monster_powers = {
 num_stars = 0
 
 # Question 5: Loading a saved game
-with open("save.txt", "r") as f:
+with open("../../save.txt", "r") as f:
     lines = f.readlines()
     most_recent_game = lines[-1].strip()
     print(most_recent_game)
@@ -305,7 +305,7 @@ if not input_invalid:
         print("    |    Hero " + short_name + " gets <" + stars_display + "> stars")
 
         # Questions 3 and 4
-        with open("save.txt", "w") as f:
+        with open("../../save.txt", "w") as f:
             if hero_won:
                 save_msg = f"Hero {short_name} has killed a monster and gained {num_stars} stars."
             else:
